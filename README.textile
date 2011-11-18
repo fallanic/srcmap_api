@@ -1,0 +1,7 @@
+h1. SourceMap API
+
+This is the sourcemap api gem. 
+
+Include it in your Gemfile with:
+
+gem 'srcmap_api', :git => "http://github.com/Foodtree/srcmap_api.git"
