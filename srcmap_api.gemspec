@@ -1,6 +1,6 @@
 
 $:.push File.expand_path("../lib", __FILE__)
-require 'srcmap/version'
+require 'version'
 
 
 Gem::Specification.new do |s|
