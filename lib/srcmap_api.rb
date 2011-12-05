@@ -1,6 +1,5 @@
 require 'rest_client'
 require 'json'
-require 'ruby-debug'
 require 'digest/md5'
 
 module SrcMap
