@@ -83,12 +83,16 @@ module SrcMap
       hdrs['Content-Type'] = 'application/json'
       puts "Headers: #{hdrs}"
       
-      response = RestClient.post(url, data.to_json)
+      response = RestClient.post(url, data, hdrs)
       
-      raise "request failed with #{response.code}" unless response.code == 200
+      raise "request failed with #{response.code}" unless response.code == 201
       json_hsh = JSON.parse(response)
+      raise "error: created missed from response" unless supplychain_path = json_hsh['created']
+      supplychain_id = supplychain_path[supplychain_path.rindex('/')+1 .. -1]
     rescue RestClient::Exception => e
       error_hash = JSON.parse(e.response)
+      puts error_hash
+      nil
     end
   end
 
@@ -99,12 +103,16 @@ module SrcMap
       hdrs['Content-Type'] = 'application/json'
       puts "Headers: #{hdrs}"
       
-      response = RestClient.post(url, data.to_json, hdrs)
+      response = RestClient.put(url, data, hdrs)
       
-      raise "request failed with #{response.code}" unless response.code == 200
+      raise "request failed with #{response.code}" unless response.code == 202
       json_hsh = JSON.parse(response)
+      raise "error: success message missing from reponse" unless json_hsh['success']
+      true
     rescue RestClient::Exception => e
       error_hash = JSON.parse(e.response)
+      puts error_hash
+      false
     end
   end  
   
