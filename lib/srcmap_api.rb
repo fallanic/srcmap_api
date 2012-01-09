@@ -5,7 +5,7 @@ require 'digest/md5'
 module SrcMap
   extend self
   
-  API_ENDPOINT = 'http://www.sourcemap.com/services/'
+  API_ENDPOINT = 'http://sourcemap.com/services/'
   VIEW_ENDPOINT = 'http://www.sourcemap.com/embed/';
   
   API_VERSION = '1.0';
